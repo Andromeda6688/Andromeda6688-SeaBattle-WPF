@@ -1,0 +1,8 @@
+I:\euler\SeaBattle1\SeaBattle\UTest\bin\Debug\UTest.dll
+I:\euler\SeaBattle1\SeaBattle\UTest\bin\Debug\UTest.pdb
+I:\euler\SeaBattle1\SeaBattle\UTest\bin\Debug\SeaBattle1.exe
+I:\euler\SeaBattle1\SeaBattle\UTest\bin\Debug\SeaBattle1.pdb
+I:\euler\SeaBattle1\SeaBattle\UTest\obj\Debug\UTest.csprojResolveAssemblyReference.cache
+I:\euler\SeaBattle1\SeaBattle\UTest\obj\Debug\UTest.dll
+I:\euler\SeaBattle1\SeaBattle\UTest\obj\Debug\UTest.pdb
+I:\euler\SeaBattle1\SeaBattle\UTest\bin\Debug\SeaBattle1.xml

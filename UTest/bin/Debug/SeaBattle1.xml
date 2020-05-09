@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SeaBattle1</name>
+    </assembly>
+    <members>
+        <member name="T:SeaBattle.EnemyBattleField">
+            <summary>
+            Сontains the specific logic of the playing field of enemy.
+            </summary>
+        </member>
+        <member name="T:SeaBattle.BattleField">
+            <summary>
+            Сontains the logic of the playing field.
+            </summary>
+        </member>
+        <member name="F:SeaBattle.BattleField.Cells">
+            <summary>
+            Set of cells
+            </summary>
+        </member>
+        <member name="F:SeaBattle.BattleField.Boats">
+            <summary>
+            Set of boats connected to this BattleField
+            </summary>
+        </member>
+        <member name="F:SeaBattle.BattleField.Game">
+            <summary>
+            Parent Game
+            </summary>
+        </member>
+        <member name="M:SeaBattle.BattleField.FillCells">
+            <summary>
+            Method for initial fill.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.BattleField.ConnectBoatToBF(SeaBattle.Boat)">
+            <summary>
+            Method MUST be performed after filling the Boats.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.BattleField.SurroundBoat(SeaBattle.Boat,SeaBattle.CellStyle,System.Boolean)">
+            <summary>
+            Surrounds boat with the specified cells.
+            </summary>
+            <param name="p_boat">The Boat to be surrounded</param>
+            <param name="p_TargetState">CellStyle to surrond the boat</param>
+            <param name="p_IsArrangement">Indicates the Stage of Game and affects the safe zone</param>
+        </member>
+        <member name="M:SeaBattle.EnemyBattleField.ArrangeAutomatically">
+            <summary>
+            Arranges boats automatically
+            </summary>
+        </member>
+        <member name="M:SeaBattle.EnemyBattleField.ArrangeBoat(SeaBattle.Boat,System.Random)">
+            <summary>
+            Helper method for arrangement of boats of enemy
+            </summary>
+            <param name="p_boat">The Boat to be arranged</param>
+            <param name="r">Object of Random</param>
+            <returns>returns true if the place for a boat was found.</returns>
+        </member>
+        <member name="M:SeaBattle.EnemyBattleField.SetCoordinates(SeaBattle.Boat,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Helper method for arrangement of boats of enemy
+            </summary>
+            <param name="p_boat">The Boat to be arranged</param>
+            <param name="p_x">X-coordinate of the first cell of boat</param>
+            <param name="p_y">Y-coordinate of the first cell of boat</param>
+            <param name="p_IsHorisontal">Desired position of the boat</param>
+            <returns>Returns true if the coordinates were set for each cell of the boat.</returns>
+        </member>
+        <member name="T:SeaBattle.Leader">
+            <summary>
+            Someone who won and had good result.
+            </summary>
+        </member>
+        <member name="T:SeaBattle.LeadershipReaderWriter">
+            <summary>
+            NOT thread-safe class to read the leaders from file.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.LeadershipReaderWriter.AddNewLeader(SeaBattle.Leader)">
+            <summary>
+            Adds the new leader into list and writes changes.
+            </summary>
+            <param name="p_Leader"></param>
+        </member>
+        <member name="M:SeaBattle.LeadershipReaderWriter.IsNewLeader(System.Int32)">
+            <summary>
+            Checks if current gamer is a leader.
+            </summary>
+            <param name="p_UserScore"></param>
+            <param name="p_EnemyScore"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SeaBattle.LeadershipReaderWriter.ReadLeadersFromXML">
+            <summary>
+            Reads the list of leader from file.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.LeadershipReaderWriter.WriteChangesToXML">
+            <summary>
+            Writes changed list into file.
+            </summary>
+        </member>
+        <member name="P:SeaBattle.LeadershipReaderWriter.Instance">
+            <summary>
+            Singleton-instance.
+            </summary>
+        </member>
+        <member name="T:SeaBattle.LeadersWindow">
+            <summary>
+            Interaction logic for LeadersWindow.xaml
+            </summary>
+            <summary>
+            LeadersWindow
+            </summary>
+        </member>
+        <member name="M:SeaBattle.LeadersWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SeaBattle.LeadersWindowViewModel">
+            <summary>
+            DataContext for Leaders Window
+            </summary>
+        </member>
+        <member name="M:SeaBattle.LeadersWindowViewModel.#ctor(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="p_UserScore">Users Score Value</param>
+            <param name="p_EnemyScore">Computers Score Value</param>
+            <param name="p_isWinner">If User won</param>
+        </member>
+        <member name="T:SeaBattle.CellStyleConverter">
+            <summary>
+            Converts value of type CellStyle into WPF-style.
+            </summary>
+        </member>
+        <member name="T:SeaBattle.UserBattleField">
+            <summary>
+            Сontains the specific logic of the playing field of user.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.UserBattleField.ParseArrangement">
+            <summary>
+            Parses boats from arrangement made by user.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.UserBattleField.CheckArrangement(System.String@)">
+            <summary>
+            Checks if parsed boats are correct and connects them to the BattleField in the case of success
+            </summary>
+            <param name="p_message">Error string</param>
+            <returns>returns true if arrangement was correct</returns>
+        </member>
+        <member name="T:SeaBattle.InfoVisibilityConverter">
+            <summary>
+            Converts FrameworkElement into Visibility depending on the name of FrameworkElement and GameStage.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.VisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts value of Boolean into WPF-visibility.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SeaBattle.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:SeaBattle.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:SeaBattle.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:SeaBattle.BattleFieldView">
+            <summary>
+            Interaction logic for BattleField.xaml
+            </summary>
+            <summary>
+            BattleFieldView
+            </summary>
+        </member>
+        <member name="M:SeaBattle.BattleFieldView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SeaBattle.Boat">
+            <summary>
+            Contains the behavior of boat
+            </summary>
+        </member>
+        <member name="F:SeaBattle.Boat.Cells">
+            <summary>
+            Set of cells which belong to this boat.
+            </summary>
+        </member>
+        <member name="F:SeaBattle.Boat.Type">
+            <summary>
+            Type of boat
+            </summary>
+        </member>
+        <member name="M:SeaBattle.Boat.#ctor(System.Collections.Generic.List{SeaBattle.Cell})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="p_Cells">List of cells to  be converted into a boat.</param>
+        </member>
+        <member name="M:SeaBattle.Boat.Shoot(SeaBattle.Cell)">
+            <summary>
+            Sets the state of the boat after shoot.
+            </summary>
+            <param name="p_Cell"></param>
+        </member>
+        <member name="M:SeaBattle.Boat.Die">
+            <summary>
+            Marks all the child cells as dead.
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Boat.State">
+            <summary>
+            Holds the current state of this boat.
+            </summary>
+        </member>
+        <member name="T:SeaBattle.Cell">
+            <summary>
+            Contains the behavior of an individual cell.
+            </summary>
+        </member>
+        <member name="F:SeaBattle.Cell.IsSafeZone">
+            <summary>
+            If this cell touches any boat?
+            </summary>
+        </member>
+        <member name="F:SeaBattle.Cell.IsBoatsFriendlyZone">
+            <summary>
+            If this cellhas an advantage when placing ships?
+            </summary>
+        </member>
+        <member name="M:SeaBattle.Cell.#ctor(System.Int32,System.Int32,SeaBattle.BattleField)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="p_x">X-coordinate of the cell in the BattleField</param>
+            <param name="p_y">Y-coordinate of the cell in the BattleField</param>
+            <param name="p_BattleField">The BattleField which contains this cell.</param>
+        </member>
+        <member name="M:SeaBattle.Cell.DrawCell">
+            <summary>
+            Method to be called when user draws a cell.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.Cell.RemoveCell">
+            <summary>
+            Method to be called when user erases a cell.
+            </summary>
+        </member>
+        <member name="M:SeaBattle.Cell.Shoot">
+            <summary>
+            Method to be called when user or computer shoot the cell.
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Cell.IsShooted">
+            <summary>
+            If the cell ever was shooted?
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Cell.IsLastShooted">
+            <summary>
+            If this cell is the last shooted cell in this BattleField?
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Cell.IsInvisible">
+            <summary>
+            If the state of the cell shouldn't be displayed?
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Cell.ParentBoat">
+            <summary>
+            The boat which contains this cell.
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Cell.ParentBattleField">
+            <summary>
+            The BattleField which contains this cell.
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Cell.x">
+            <summary>
+            X-coordinate of the cell in the BattleField
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Cell.y">
+            <summary>
+            Y-coordinate of the cell in the BattleField
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Cell.Style">
+            <summary>
+            Style of cell
+            </summary>
+        </member>
+        <member name="T:SeaBattle.CellView">
+            <summary>
+            Interaction logic for CellView.xaml
+            </summary>
+            <summary>
+            CellView
+            </summary>
+        </member>
+        <member name="M:SeaBattle.CellView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SeaBattle.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:SeaBattle.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SeaBattle.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SeaBattle.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
